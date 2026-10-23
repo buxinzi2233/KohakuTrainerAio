@@ -1,0 +1,24 @@
+# Root-local tool state and caches
+/.snow/
+/.codegraph/
+/.cache/
+/.venv/
+/__pycache__/
+
+# Root-local credentials and secrets
+/.env
+/.env.*
+!/.env.example
+/credentials.json
+/secrets.json
+/cookies.txt
+/cookies.json
+
+# Root-local downloaded data and runtime output
+/downloads/
+/datasets/
+/models/
+/outputs/
+/runs/
+/logs/
+/*.log

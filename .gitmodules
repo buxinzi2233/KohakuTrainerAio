@@ -1,0 +1,12 @@
+[submodule "ArtistSourceGrabber"]
+	path = ArtistSourceGrabber
+	url = https://github.com/buxinzi2233/ArtistSourceGrabber.git
+[submodule "KohakuGBC"]
+	path = KohakuGBC
+	url = https://github.com/buxinzi2233/KohakuGBC.git
+[submodule "KohakuMossTrainer"]
+	path = KohakuMossTrainer
+	url = https://github.com/buxinzi2233/KohakuMossTrainer.git
+[submodule "KohakuMoss-UI"]
+	path = KohakuMoss-UI
+	url = https://github.com/buxinzi2233/KohakuMoss-UI.git
