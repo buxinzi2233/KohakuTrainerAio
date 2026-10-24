@@ -1,3 +1,6 @@
+# Not part of the 1.0 release: keeps a local checkout out of the repo
+/KohakuGBC/
+
 # Root-local tool state and caches
 /.snow/
 /.codegraph/
