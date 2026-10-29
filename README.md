@@ -1,15 +1,15 @@
 # KohakuTrainerAio
 
-MOSS-Image 的本地微调工作区：训练框架 + 本地 Web 工作台 + 素材采集。当前为 **1.0** 版本。
+MOSS-Image 的本地微调工作区：训练框架 + 本地 Web 工作台 + 素材采集。当前为 **2.0** 版本。
 
 > [!WARNING]
-> **Windows 支持未做完整测试。** 1.0 的 Windows 部分只完成了启动脚本的静态检查与一部分兼容性修复（进程、编码、文件语义、工具链探测），没有在真实 Windows 设备上跑通完整流程；采集后端的浏览器进程管理与安全文件读取仍含 POSIX 假设。欢迎提交 issue 说明环境，但请不要把当前状态当作生产可用承诺。
+> **Windows 支持未做完整测试。** 2.0 的 Windows 部分只完成了启动脚本的静态检查与一部分兼容性修复（进程、编码、文件语义、工具链探测），没有在真实 Windows 设备上跑通完整流程；采集后端的浏览器进程管理与安全文件读取仍含 POSIX 假设。欢迎提交 issue 说明环境，但请不要把当前状态当作生产可用承诺。
 
-## 1.0 说明
+## 2.0 说明
 
-- 发布范围是 `KohakuMossTrainer`、`KohakuMoss-UI`、`ArtistSourceGrabber` 三个子模块加根目录的两个启动脚本。
-- `KohakuGBC`（图结构图像描述）**尚未完成，因此 1.0 不含它**：组件表与快速开始都没有它；本地若存在 `KohakuGBC/` 目录，只是一份本地检出，不随 1.0 分发。
-- Trainer 与 UI 的版本号为 1.0.0；采集器沿用其自身 2.0 版本线。UI 通过 CLI、文件与进程契约分别对接两者，不导入它们的源码。
+- 发布范围是 `KohakuMossTrainer`、`KohakuMoss-UI`、`ArtistSourceGrabber`、`KohakuGBC` 四个子模块加根目录的两个启动脚本。
+- `KohakuGBC`（图结构图像描述）**已作为第 4 个子模块纳入**，父仓库固定其提交指针；本地 `KohakuGBC/` 目录不再是「不随发布分发的本地检出」。
+- `KohakuMossTrainer` 与 `KohakuMoss-UI` 的版本号仍为 1.0.0；采集器沿用其自身 2.x 版本线。UI 通过 CLI、文件与进程契约分别对接它们，不导入它们的源码。
 
 ## 组件
 
@@ -18,8 +18,9 @@ MOSS-Image 的本地微调工作区：训练框架 + 本地 Web 工作台 + 素�
 | KohakuMossTrainer | MOSS-Image 微调与推理：LoRA / LyCORIS（LoCon、LoHa、LoKr、DoRA、OFT、BOFT、GLoRA、IA3、DyLoRA、T-LoRA）、全量微调、6–8 GB 低显存配置档、多 GPU（仅 Linux） | `KohakuMossTrainer/` |
 | KohakuMoss-UI | 本地 Web 工作台：训练队列、运行记录、数据集、产物、环境体检、设置，以及图片采集、标注、翻译工作台 | `KohakuMoss-UI/` |
 | ArtistSourceGrabber | 多来源素材采集（X、Pixiv、Danbooru 等）与可选图像打标，由 UI 作为独立服务拉起 | `ArtistSourceGrabber/` |
+| KohakuGBC | 图结构图像描述（GBC）：在 Togeari 数据流机上以 KIR 程序生成图与逐实体描述 | `KohakuGBC/` |
 
-总仓只固定三个子模块的提交指针：不合并源码，不提供统一安装器，也不接管各自的依赖、测试与发布节奏。子模块固定在具体提交上，不会自动跟随上游最新分支；新克隆得到的是所固定的提交，不是某台机器上的工作区快照。
+总仓只固定四个子模块的提交指针：不合并源码，不提供统一安装器，也不接管各自的依赖、测试与发布节奏。子模块固定在具体提交上，不会自动跟随上游最新分支；新克隆得到的是所固定的提交，不是某台机器上的工作区快照。
 
 ## 功能一览
 
@@ -132,7 +133,7 @@ start.bat --state "D:\AIO test\state" --runs "D:\AIO test\runs" --no-open
 
 ## 文档
 
-- [功能说明](docs/features.md)：三个子模块的能力、数据流、页面逐项读写与契约边界。
+- [功能说明](docs/features.md)：四个子模块的能力、数据流、页面逐项读写与契约边界。
 - [训练图文教程](docs/training-tutorial.md)：从安装到出图的完整走查。
 - [变更记录](CHANGELOG.md)：按版本列出新增、修复与已知限制。
 - Trainer：[README](KohakuMossTrainer/README.md) · [文档索引](KohakuMossTrainer/docs/README.md) · [中文文档](KohakuMossTrainer/docs/zh-CN/README.md)（安装、数据、配置、全量微调、多卡、导出与推理都在 `KohakuMossTrainer/docs/guides/`）。

@@ -7,3 +7,6 @@
 [submodule "KohakuMoss-UI"]
 	path = KohakuMoss-UI
 	url = https://github.com/buxinzi2233/KohakuMoss-UI.git
+[submodule "KohakuGBC"]
+	path = KohakuGBC
+	url = https://github.com/buxinzi2233/KohakuGBC.git

@@ -1,5 +1,23 @@
 # 变更记录
 
+## v2.0.0 — 2026-10-30
+
+### 新增
+
+- `KohakuGBC`（图结构图像描述）作为**第 4 个子模块**纳入发布（`https://github.com/buxinzi2233/KohakuGBC.git`），父仓库固定其指针为 `08dd0e4`。
+- 根目录 `.gitignore` 移除对 `/KohakuGBC/` 的忽略：该目录不再是「被忽略的本地检出」，而是受版本控制的子模块。
+- 发布范围扩为四个子模块（`KohakuMossTrainer`、`KohakuMoss-UI`、`ArtistSourceGrabber`、`KohakuGBC`）加根目录的两个启动脚本。
+
+### 合并上游
+
+- `KohakuMossTrainer` 合并 `KohakuBlueleaf/KohakuMossTrainer` 的 3 个提交（13 文件，+402/−35，无冲突），指针从 `0980eee` 前进到 `2aa0251`。
+- `KohakuGBC` 合并 `KohakuBlueleaf/KohakuGBC` 的 63 个提交（249 文件，+19683/−2501）；冲突按「保留本地简体中文文档 + 采纳上游 `examples/` → `src/kohakugbc_models/vlm/` 重命名」解决。
+
+### 版本说明
+
+- 本仓库版本号升至 2.0；`KohakuMossTrainer` 与 `KohakuMoss-UI` 仍为 1.0.0，`ArtistSourceGrabber` 沿用其自身 2.x 版本线。
+- 采集器（`ArtistSourceGrabber`）本轮补齐标注工作台、按下载分组浏览的磁盘图库与若干健壮性修复。
+
 ## v1.0.0 — 2026-10-24
 
 ### 新增
@@ -13,7 +31,7 @@
 - 新增 Windows 兼容层：进程创建标志（`CREATE_NO_WINDOW` / `CREATE_NEW_PROCESS_GROUP`）、`RUN_NAME` 可移植性校验（非法字符、保留设备名、结尾点或空格）、`taskkill` 停止路径、`.venv/Scripts` 工具发现、Win32 进程存活探测。
 - 新增根目录 `start.sh` 与 `start.bat`：按脚本位置定位子项目、前台启动本地 UI，不做安装或 Git 操作。
 - 新增跨进程接口文档：`docs/guides/interfaces.md`（英文）与 `docs/zh-CN/guides/interfaces.md`（中文），以及 6 个兼容性回归测试文件。
-- 1.0 发布结构：总仓文档与启动脚本成型；`KohakuGBC` 尚未完成，因此不在本次发布中。
+- 1.0 发布结构：总仓文档与启动脚本成型；`KohakuGBC` 尚未完成，因此不在本次发布中（v2.0.0 起已纳入，见上）。
 
 ### 修复
 
@@ -37,6 +55,6 @@
 
 - Windows 支持未完整测试：仅完成脚本静态检查与上述兼容性修复，未在真实设备上跑通完整训练、多卡与采集流程。
 - 采集后端仍有 POSIX 假设（`openat` / `O_NOFOLLOW` / `pread`、浏览器进程管理），Windows 下的采集与停止需独立适配与验证。
-- `KohakuGBC` 尚未完成，因此未纳入 1.0。
+- `KohakuGBC` 尚未完成，因此未纳入 1.0（v2.0.0 起已纳入，见上）。
 - 多 GPU 训练（DDP、FSDP2、流水线、线程化）仍仅限 Linux。
 - 关闭 UI 进程会保留已启动的采集服务及其任务，重启 UI 不接管旧服务，也不恢复其任务历史。
