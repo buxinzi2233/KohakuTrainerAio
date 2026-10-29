@@ -63,6 +63,7 @@ cd KohakuTrainerAio
 | Trainer | `bash scripts/install/install.sh`（Linux）或 `powershell -ExecutionPolicy Bypass -File scripts\install\install.ps1`（Windows），详见 `KohakuMossTrainer/docs/guides/install.md` 与 `KohakuMossTrainer/docs/guides/install-windows.md` |
 | UI | 在 Trainer 的虚拟环境里 `uv pip install -e .`（可选 `-e ".[native]"` 启用 pywebview 窗口），详见 `KohakuMoss-UI/README.md` |
 | ASG | 按 `ArtistSourceGrabber/README.md` 安装其 `requirements`；UI 通过 `KOHAKUMOSS_GRABBER_ROOT` 与 `KOHAKUMOSS_GRABBER_PYTHON` 指向它 |
+| GBC | 按 `KohakuGBC/README.md` 安装其发行包（`pip install kohakugbc`，可选 extras 如 `[torch]`、`[vllm]`、`[qwen35]`），或可编辑安装 `uv pip install -e packages/kohakugbc-data -e ".[torch,qwen35,dev]"` |
 
 ## 快速开始
 
@@ -128,6 +129,7 @@ start.bat --state "D:\AIO test\state" --runs "D:\AIO test\runs" --no-open
 | Trainer | KohakuMoss License 1.0（Apache-2.0 加一项附加条款：衍生作品名称须含 “Kohaku”） |
 | UI | MIT |
 | ASG | 沿用其上游仓库的许可与使用条款；当前 checkout 根目录没有 `LICENSE` 文件，上游 README 明确说明未提供许可证时不自动授予复制、再分发或商业使用许可 |
+| GBC | Apache-2.0（见 `KohakuGBC/LICENSE`） |
 
 总仓根目录不额外新增统一许可证，也没有覆盖子项目许可的能力。
 
